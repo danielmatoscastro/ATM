@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --text-color: black;
+    --button-color: #C4C4C4;
+    --button-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --button-radius: 15px;
+    --border: 2px solid black;
+}
+
+body {
+    background-color: black;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+h1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: center;
+}
+
+.default-page {
+    width: 800px;
+    height: 600px;
+}
+
+.default-button {
+    width: 100px;
+    height: 100px;
+    background-color: var(--button-color);
+    border: var(--border);
+    box-sizing: border-box;
+    box-shadow: var(--button-shadow);
+    border-radius: var(--button-radius);
+}
+
+.main-menu-button {
+    width: 215px;
+    height: 274px;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: center;
+}
+
+.main-menu-button img {
+    width: 100px;
+    height: 96px;
+}
+
+.main-menu-button.transferencia {
+    font-size: 29px;
+    line-height: 34px;
+}
+
+.main-menu-button.outros{
+    height: 90px;
+}
+
+.continuar.continuar {
+    background-color: var(--button-color);
+    border: var(--border);
+    box-sizing: border-box;
+    box-shadow: var(--button-shadow);
+    border-radius: var(--button-radius);
+    width: 161px;
+    height: 55px;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.continuar.continuar:hover {
+    background-color: var(--button-color);
+    border: var(--border);
+    color: var(--text-color);
+}
