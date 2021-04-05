@@ -9,7 +9,7 @@ export const Menu = () => (
     <h1>Escolha a operação</h1>
     <div className="flex justify-around mt-16 mb-12">
       <DefaultButton className="main-menu-button">
-        <Link to="/withdraw/choice-value">
+        <Link to="/saque">
           <div className="my-9">Saque</div>
           <img src={withdraw} alt="Saque" className="m-auto" />
         </Link>

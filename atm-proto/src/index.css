@@ -61,7 +61,11 @@ h1 {
     height: 90px;
 }
 
-.continuar.continuar {
+.step-indicator.step-indicator   {
+    padding-top: 0;
+}
+
+.voltar.voltar, .continuar.continuar {
     background-color: var(--button-color);
     border: var(--border);
     box-sizing: border-box;
@@ -77,7 +81,7 @@ h1 {
     color: var(--text-color);
 }
 
-.continuar.continuar:hover {
+.voltar.voltar:hover, .continuar.continuar:hover {
     background-color: var(--button-color);
     border: var(--border);
     color: var(--text-color);

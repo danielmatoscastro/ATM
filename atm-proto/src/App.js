@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Menu, ChoiceValue } from './pages';
+import { Menu, Withdraw } from './pages';
 
 function App() {
   return (
@@ -8,8 +8,8 @@ function App() {
       <div className="App">
 
         <Switch>
-          <Route path="/withdraw/choice-value">
-            <ChoiceValue />
+          <Route path="/saque">
+            <Withdraw />
           </Route>
           <Route path="/">
             <Menu />

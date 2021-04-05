@@ -3,6 +3,7 @@ import { Stepper } from 'react-form-stepper';
 
 export const StepIndicator = ({ steps, activeStep }) => (
   <Stepper
+    className="step-indicator"
     steps={steps.map((step) => ({ label: step }))}
     activeStep={activeStep}
     styleConfig={{
