@@ -1,0 +1,21 @@
+.main-menu-button {
+    width: 215px;
+    height: 274px;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: center;
+}
+
+.main-menu-button img {
+    width: 100px;
+    height: 96px;
+}
+
+.main-menu-button.transferencia {
+    font-size: 29px;
+    line-height: 34px;
+}
+
+.main-menu-button.outros{
+    height: 90px;
+}

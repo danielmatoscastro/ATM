@@ -1,0 +1,9 @@
+.default-button {
+    width: 100px;
+    height: 100px;
+    background-color: var(--button-color);
+    border: var(--border);
+    box-sizing: border-box;
+    box-shadow: var(--button-shadow);
+    border-radius: var(--button-radius);
+}

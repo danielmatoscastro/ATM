@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './style.css';
 
 export const DefaultPage = ({ children }) => (
   <div className="w-screen h-screen flex items-center justify-center">

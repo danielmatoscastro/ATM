@@ -9,6 +9,7 @@ import {
 import { DefaultPage } from '../DefaultPage';
 import { DefaultButton } from '../DefaultButton';
 import { StepIndicator } from '../StepIndicator';
+import './style.css';
 
 export const OperationPage = ({ steps }) => {
   const { path } = useRouteMatch();

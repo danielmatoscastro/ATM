@@ -1,0 +1,21 @@
+.voltar.voltar, .continuar.continuar {
+    background-color: var(--button-color);
+    border: var(--border);
+    box-sizing: border-box;
+    box-shadow: var(--button-shadow);
+    border-radius: var(--button-radius);
+    width: 161px;
+    height: 55px;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.voltar.voltar:hover, .continuar.continuar:hover {
+    background-color: var(--button-color);
+    border: var(--border);
+    color: var(--text-color);
+}

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './style.css';
 
 export const DefaultButton = ({ className, onClick, children }) => (
   <button type="button" onClick={onClick} className={`default-button ${className}`}>

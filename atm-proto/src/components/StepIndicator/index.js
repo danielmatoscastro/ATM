@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Stepper } from 'react-form-stepper';
+import './style.css';
 
 export const StepIndicator = ({ steps, activeStep }) => (
   <Stepper
