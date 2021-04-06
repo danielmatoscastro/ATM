@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { operations as initialOperations } from 'mocks';
+import { operations as initialOperations, operationsIds } from 'mocks';
 
 export const useOperations = () => {
   const [operations, setOperations] = useState([]);
@@ -36,6 +36,7 @@ export const useOperations = () => {
 
   return {
     operations: operationsSorted,
+    operationsIds,
     incrementOperation,
   };
 };

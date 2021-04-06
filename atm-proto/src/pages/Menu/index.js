@@ -1,38 +1,35 @@
 import { Link } from 'react-router-dom';
 import { DefaultPage, DefaultButton } from 'components';
-import withdraw from 'imgs/withdraw.png';
-import receipt from 'imgs/receipt.png';
-import sendMoney from 'imgs/sendMoney.png';
+import { useOperations } from 'hooks';
 import './style.css';
 
-export const Menu = () => (
-  <DefaultPage>
-    <h1>Escolha a operação</h1>
-    <div className="flex justify-around mt-16 mb-12">
-      <DefaultButton className="main-menu-button">
-        <Link to="/saque">
-          <div className="my-9">Saque</div>
-          <img src={withdraw} alt="Saque" className="m-auto" />
-        </Link>
-      </DefaultButton>
-      <DefaultButton className="main-menu-button">
-        <div className="my-9">Saldo</div>
-        <img src={receipt} alt="Saldo" className="m-auto" />
-      </DefaultButton>
-      <DefaultButton className="main-menu-button transferencia">
-        <div className="my-9">Transferência</div>
-        <img src={sendMoney} alt="Trasnferência" className="m-auto" />
-      </DefaultButton>
-    </div>
+export const Menu = () => {
+  const { operations, operationsIds } = useOperations();
+  const operationsTop3 = operations.slice(0, 3);
 
-    <div className="flex align-center justify-center">
-      <Link to="/outros">
-        <DefaultButton className="main-menu-button outros ">
-          <div>Outros</div>
-        </DefaultButton>
-      </Link>
-    </div>
-  </DefaultPage>
-);
+  return (
+    <DefaultPage>
+      <h1>Escolha a operação</h1>
+      <div className="flex justify-around mt-16 mb-12">
+        {operationsTop3.map((operation) => (
+          <Link key={operation.id} to={operation.path}>
+            <DefaultButton className={`main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}>
+              <div className="my-9">{operation.name}</div>
+              {operation.img && <img src={operation.img} alt={operation.name} className="m-auto" />}
+            </DefaultButton>
+          </Link>
+        ))}
+      </div>
+
+      <div className="flex align-center justify-center">
+        <Link to="/outros">
+          <DefaultButton className="main-menu-button outros">
+            <div>Outros</div>
+          </DefaultButton>
+        </Link>
+      </div>
+    </DefaultPage>
+  );
+};
 
 export default Menu;
