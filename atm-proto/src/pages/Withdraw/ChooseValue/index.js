@@ -1,4 +1,4 @@
-import { DefaultButton, DefaultInput } from '../../../components';
+import { DefaultButton, DefaultInput } from 'components';
 import './style.css';
 
 export const ChooseValue = () => (

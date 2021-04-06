@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Menu, Withdraw } from './pages';
+import { Menu, Withdraw } from 'pages';
 
 function App() {
   return (

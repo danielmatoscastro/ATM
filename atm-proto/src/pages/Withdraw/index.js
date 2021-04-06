@@ -1,4 +1,4 @@
-import { OperationPage } from '../../components';
+import { OperationPage } from 'components';
 import { ChooseValue } from './ChooseValue';
 
 const steps = [

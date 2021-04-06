@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { DefaultPage, DefaultButton } from '../../components';
-import withdraw from '../../imgs/withdraw.png';
-import receipt from '../../imgs/receipt.png';
-import sendMoney from '../../imgs/sendMoney.png';
+import { DefaultPage, DefaultButton } from 'components';
+import withdraw from 'imgs/withdraw.png';
+import receipt from 'imgs/receipt.png';
+import sendMoney from 'imgs/sendMoney.png';
 import './style.css';
 
 export const Menu = () => (
