@@ -16,7 +16,7 @@ export const ChooseValue = () => (
       </DefaultButton>
     </div>
 
-    <DefaultInput label="R$" />
+    <DefaultInput focusOnMount label="R$" />
   </>
 );
 

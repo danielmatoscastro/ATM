@@ -1,5 +1,7 @@
 import { OperationPage } from 'components';
 import { ChooseValue } from './ChooseValue';
+import { InsertPassword } from './InsertPassword';
+import { EndWithdraw } from './EndWithdraw';
 
 const steps = [
   {
@@ -10,12 +12,12 @@ const steps = [
   {
     name: 'Senha',
     path: '/senha',
-    page: () => <h1>Senha</h1>,
+    page: () => <InsertPassword />,
   },
   {
     name: 'Fim',
     path: '/fim-saque',
-    page: () => <h1>Fim</h1>,
+    page: () => <EndWithdraw />,
   },
 ];
 

@@ -1,0 +1,12 @@
+.default-message {
+    width: 577px;
+    height: 300px;
+
+    background: var(--message-bg-color);
+    border: var(--message-border);
+    box-sizing: border-box;
+
+    font-size: var(--message-font-size);
+    line-height: var(--message-line-height);
+    text-align: center;
+}
