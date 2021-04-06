@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Menu, Withdraw } from 'pages';
+import { Menu, Withdraw, SecondaryMeny } from 'pages';
 
 function App() {
   return (
@@ -8,6 +8,9 @@ function App() {
         <Switch>
           <Route path="/saque">
             <Withdraw />
+          </Route>
+          <Route path="/outros">
+            <SecondaryMeny />
           </Route>
           <Route path="/">
             <Menu />

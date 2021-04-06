@@ -1,0 +1,13 @@
+.secondary-menu-button {
+    width: 328px;
+    height: 90px;
+}
+
+.secondary-menu-voltar {
+    width: 215px;
+    height: 90px;
+}
+
+.secondary-menu-button, .secondary-menu-voltar {
+    font-size: 27px;
+}

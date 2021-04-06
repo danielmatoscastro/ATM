@@ -26,9 +26,11 @@ export const Menu = () => (
     </div>
 
     <div className="flex align-center justify-center">
-      <DefaultButton className="main-menu-button outros ">
-        <div>Outros</div>
-      </DefaultButton>
+      <Link to="/outros">
+        <DefaultButton className="main-menu-button outros ">
+          <div>Outros</div>
+        </DefaultButton>
+      </Link>
     </div>
   </DefaultPage>
 );
