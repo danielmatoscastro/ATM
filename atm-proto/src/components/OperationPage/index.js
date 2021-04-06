@@ -35,37 +35,38 @@ export const OperationPage = ({ steps }) => {
     <DefaultPage>
       <div className="flex h-full flex-col justify-between pb-7">
         <StepIndicator steps={stepNames} activeStep={activeStep} />
+        <div className="flex flex-col justify-between flex-grow pt-2 pb-10">
+          <Switch>
+            {steps.map((step, index) => {
+              if (index === 0) {
+                return (
+                  <Route key={step.name} exact path={[path, `${path}${step.path}`]}>
+                    <step.page />
+                  </Route>
+                );
+              }
 
-        <Switch>
-          {steps.map((step, index) => {
-            if (index === 0) {
               return (
-                <Route key={step.name} exact path={[path, `${path}${step.path}`]}>
+                <Route key={step.name} path={`${path}${step.path}`}>
                   <step.page />
                 </Route>
               );
-            }
+            })}
+          </Switch>
 
-            return (
-              <Route key={step.name} path={`${path}${step.path}`}>
-                <step.page />
-              </Route>
-            );
-          })}
-        </Switch>
+          <div className="flex justify-between px-12">
+            <Link to={previousPage}>
+              <DefaultButton className="voltar" onClick={onClickBack}>
+                Voltar
+              </DefaultButton>
+            </Link>
 
-        <div className="flex justify-between px-12">
-          <Link to={previousPage}>
-            <DefaultButton className="voltar" onClick={onClickBack}>
-              Voltar
-            </DefaultButton>
-          </Link>
-
-          <Link to={nextPage}>
-            <DefaultButton className="continuar" onClick={onClickContinue}>
-              Continuar
-            </DefaultButton>
-          </Link>
+            <Link to={nextPage}>
+              <DefaultButton className="continuar" onClick={onClickContinue}>
+                Continuar
+              </DefaultButton>
+            </Link>
+          </div>
         </div>
       </div>
     </DefaultPage>

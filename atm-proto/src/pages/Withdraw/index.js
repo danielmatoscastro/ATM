@@ -1,10 +1,11 @@
 import { OperationPage } from '../../components';
+import { ChooseValue } from './ChooseValue';
 
 const steps = [
   {
     name: 'Valor',
     path: '/valor',
-    page: () => <h1>Valor</h1>,
+    page: () => <ChooseValue />,
   },
   {
     name: 'Senha',
