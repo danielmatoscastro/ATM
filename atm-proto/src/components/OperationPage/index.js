@@ -1,33 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Switch,
   Route,
   useRouteMatch,
-  Link,
+  useHistory,
 } from 'react-router-dom';
+import { useCurrentUser, useCurrentOperation } from 'hooks';
 import { DefaultPage } from '../DefaultPage';
 import { DefaultButton } from '../DefaultButton';
 import { StepIndicator } from '../StepIndicator';
 import './style.css';
 
-export const OperationPage = ({ steps }) => {
+export const OperationPage = ({ steps, operationId }) => {
   const { path } = useRouteMatch();
+  const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
+  const { currentUser } = useCurrentUser();
+  const { currentOperation, initOperation, finishCurrentOperation } = useCurrentOperation();
 
-  const onClickContinue = () => {
-    if (activeStep + 1 < steps.length) {
-      setActiveStep((active) => active + 1);
+  useEffect(() => {
+    if (currentOperation?.id !== operationId && activeStep === 0) {
+      initOperation(operationId);
     }
-  };
-  const onClickBack = () => {
-    if (activeStep - 1 >= 0) {
-      setActiveStep((active) => active - 1);
-    }
-  };
+  }, []);
 
   const nextPage = activeStep + 1 < steps.length ? `${path}${steps[activeStep + 1].path}` : '/';
   const previousPage = activeStep - 1 >= 0 ? `${path}${steps[activeStep - 1].path}` : '/';
+
+  const onClickContinue = () => {
+    if (steps[activeStep].validateNext(currentUser, currentOperation.payload, console.log)) {
+      if (activeStep === steps.length - 1) {
+        finishCurrentOperation();
+      } else {
+        setActiveStep((active) => active + 1);
+      }
+
+      history.push(nextPage);
+    }
+  };
+
+  const onClickBack = () => {
+    if (activeStep - 1 >= 0) {
+      setActiveStep((active) => active - 1);
+
+      history.push(previousPage);
+    }
+  };
 
   const stepNames = steps.map((step) => step.name);
 
@@ -55,17 +74,13 @@ export const OperationPage = ({ steps }) => {
           </Switch>
 
           <div className="flex justify-between px-12">
-            <Link to={previousPage}>
-              <DefaultButton className="voltar" onClick={onClickBack}>
-                Voltar
-              </DefaultButton>
-            </Link>
+            <DefaultButton className="voltar" onClick={onClickBack}>
+              Voltar
+            </DefaultButton>
 
-            <Link to={nextPage}>
-              <DefaultButton className="continuar" onClick={onClickContinue}>
-                Continuar
-              </DefaultButton>
-            </Link>
+            <DefaultButton className="continuar" onClick={onClickContinue}>
+              Continuar
+            </DefaultButton>
           </div>
         </div>
       </div>
@@ -75,6 +90,7 @@ export const OperationPage = ({ steps }) => {
 
 OperationPage.propTypes = {
   steps: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  operationId: PropTypes.number.isRequired,
 };
 
 export default OperationPage;

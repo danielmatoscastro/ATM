@@ -1,24 +1,15 @@
-import { useEffect } from 'react';
 import { DefaultButton, DefaultInput } from 'components';
-import { useOperations, useCurrentOperation } from 'hooks';
+import { useCurrentOperation } from 'hooks';
 import './style.css';
 
 export const ChooseValue = () => {
-  const { operationsIds } = useOperations();
-  const { currentOperation, initOperation } = useCurrentOperation();
-
-  useEffect(() => {
-    if (currentOperation?.id !== operationsIds.SAQUE) {
-      initOperation(operationsIds.SAQUE);
-    }
-  },
-  []);
+  const { currentOperation, setPayload } = useCurrentOperation();
 
   return (
     <>
       <h1 className="title">Escolha ou digite o valor do saque</h1>
       <div className="flex justify-around">
-        <DefaultButton className="value-button">
+        <DefaultButton className="value-button" onClick={() => setPayload({ ...currentOperation.payload, value: 50 })}>
           R$ 50
         </DefaultButton>
         <DefaultButton className="value-button">

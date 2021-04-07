@@ -1,11 +1,16 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DefaultPage, DefaultButton } from 'components';
-import { useOperations } from 'hooks';
+import { useCurrentUser, useUsers, useOperations } from 'hooks';
 import './style.css';
 
 export const Menu = () => {
   const { operations, operationsIds } = useOperations();
   const operationsTop3 = operations.slice(0, 3);
+  const { usersIds } = useUsers();
+  const { setCurrentUser } = useCurrentUser();
+
+  useEffect(() => setCurrentUser(usersIds.EUCLIDES), [usersIds, setCurrentUser]);
 
   return (
     <DefaultPage>

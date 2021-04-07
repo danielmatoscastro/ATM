@@ -4,11 +4,12 @@ import { useOperations } from 'hooks/useOperations';
 import { CurrentOperationContext } from './CurrentOperationContext';
 
 export const CurrentOperationProvider = ({ children }) => {
-  const [currentOperation, setCurrentOperation] = useState({});
+  const [currentOperation, setCurrentOperation] = useState({ payload: {} });
   const { operations, incrementOperation } = useOperations();
 
   const initOperation = useCallback((operationId) => {
-    setCurrentOperation(operations.find((op) => op.id === operationId));
+    const operation = operations.find((op) => op.id === operationId);
+    setCurrentOperation({ ...operation, payload: {} });
   }, [operations, setCurrentOperation]);
 
   const finishCurrentOperation = useCallback(
