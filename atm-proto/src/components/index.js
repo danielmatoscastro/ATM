@@ -4,3 +4,4 @@ export * from './StepIndicator';
 export * from './OperationPage';
 export * from './DefaultInput';
 export * from './DefaultMessage';
+export * from './MoneyInput';

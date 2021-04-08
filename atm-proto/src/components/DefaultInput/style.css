@@ -1,4 +1,5 @@
 .default-input {
+    display: inline-block;
     width: 498px;
     height: 63px;
     background: #C4C4C4;
