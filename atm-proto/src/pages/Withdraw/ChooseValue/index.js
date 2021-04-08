@@ -1,4 +1,4 @@
-import { DefaultButton, MoneyInput } from 'components';
+import { DefaultButton, MoneyInput, ErrorPage } from 'components';
 import { useCurrentOperation } from 'hooks';
 import './style.css';
 
@@ -29,12 +29,14 @@ export const ChooseValue = () => {
 };
 
 export const validateNext = (userAccount, payload, setErrorMessage) => {
-  if (parseFloat(payload.value) <= parseFloat(userAccount.ammount)) {
+  if (parseFloat(payload.value.replaceAll('.', '')) <= parseFloat(userAccount.ammount)) {
     return true;
   }
 
   setErrorMessage('Valor inválido.');
   return false;
 };
+
+export const OnError = () => <ErrorPage />;
 
 export default ChooseValue;

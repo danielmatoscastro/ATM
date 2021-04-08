@@ -1,6 +1,10 @@
 import { OperationPage } from 'components';
 import { useOperations } from 'hooks';
-import { ChooseValue, validateNext as validateNextChooseValue } from './ChooseValue';
+import {
+  ChooseValue,
+  validateNext as validateNextChooseValue,
+  OnError as OnErrorChooseValue,
+} from './ChooseValue';
 import { InsertPassword, validateNext as validateNextInsertPassword } from './InsertPassword';
 import { EndWithdraw } from './EndWithdraw';
 
@@ -10,6 +14,7 @@ const steps = [
     path: '/valor',
     page: () => <ChooseValue />,
     validateNext: validateNextChooseValue,
+    onError: (message) => <OnErrorChooseValue message={message} />,
   },
   {
     name: 'Senha',

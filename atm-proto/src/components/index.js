@@ -6,3 +6,4 @@ export * from './DefaultInput';
 export * from './DefaultMessage';
 export * from './MoneyInput';
 export * from './PasswordInput';
+export * from './ErrorPage';

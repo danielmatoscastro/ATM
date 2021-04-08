@@ -1,27 +1,20 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Switch,
   Route,
   useRouteMatch,
-  useHistory,
 } from 'react-router-dom';
-import { useCurrentUser, useCurrentOperation } from 'hooks';
-import { DefaultPage } from '../DefaultPage';
-import { DefaultButton } from '../DefaultButton';
-import { StepIndicator } from '../StepIndicator';
+import { useCurrentOperation } from 'hooks';
+import { OperationPageInternal } from './OperationPageInternal';
 import './style.css';
 
 export const OperationPage = ({ steps, operationId }) => {
   const { path } = useRouteMatch();
-  const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
-  const { currentUser } = useCurrentUser();
   const {
     currentOperation,
     initOperation,
-    finishCurrentOperation,
-    cancelCurrentOperation,
   } = useCurrentOperation();
 
   useEffect(() => {
@@ -30,73 +23,39 @@ export const OperationPage = ({ steps, operationId }) => {
     }
   }, []);
 
-  const nextPage = activeStep + 1 < steps.length ? `${path}${steps[activeStep + 1].path}` : '/';
-  const previousPage = activeStep - 1 >= 0 ? `${path}${steps[activeStep - 1].path}` : '/';
-
-  const onClickContinue = () => {
-    if (steps[activeStep].validateNext(currentUser, currentOperation.payload, console.log)) {
-      if (activeStep === steps.length - 1) {
-        finishCurrentOperation();
-      } else {
-        setActiveStep((active) => active + 1);
-      }
-
-      history.push(nextPage);
-    }
-  };
-
-  const onClickBack = () => {
-    if (activeStep - 1 >= 0) {
-      setActiveStep((active) => active - 1);
-    } else {
-      cancelCurrentOperation();
-    }
-
-    history.push(previousPage);
-  };
-
-  const stepNames = steps.map((step) => step.name);
-  const { showButtonBack = true, showButtonContinue = true } = steps[activeStep];
-
   return (
-    <DefaultPage>
-      <div className="flex h-full flex-col justify-between pb-7">
-        <StepIndicator steps={stepNames} activeStep={activeStep} />
-        <div className="flex flex-col justify-between flex-grow pt-2 pb-10">
-          <Switch>
-            {steps.map((step, index) => {
-              if (index === 0) {
-                return (
-                  <Route key={step.name} exact path={[path, `${path}${step.path}`]}>
-                    <step.page />
-                  </Route>
-                );
-              }
+    <Switch>
+      {steps.map((step, index) => {
+        let pathRoute;
+        let onErrorPathRoute;
+        if (index === 0) {
+          pathRoute = [path, `${path}${step.path}`];
+          onErrorPathRoute = [`${path}/error`, `${path}${step.path}/error`];
+        } else {
+          pathRoute = `${path}${step.path}`;
+          onErrorPathRoute = `${path}${step.path}/error`;
+        }
 
-              return (
-                <Route key={step.name} path={`${path}${step.path}`}>
-                  <step.page />
-                </Route>
-              );
-            })}
-          </Switch>
-
-          <div className="flex justify-between px-12">
-            {showButtonBack && (
-            <DefaultButton className="voltar" onClick={onClickBack}>
-              Voltar
-            </DefaultButton>
+        return (
+          <React.Fragment key={step.name}>
+            <Route exact path={pathRoute}>
+              <OperationPageInternal
+                activeStep={activeStep}
+                setActiveStep={setActiveStep}
+                steps={steps}
+              >
+                <step.page />
+              </OperationPageInternal>
+            </Route>
+            {step.onError && (
+            <Route exact path={onErrorPathRoute}>
+              <step.onError />
+            </Route>
             )}
-
-            { showButtonContinue && (
-              <DefaultButton className="continuar" onClick={onClickContinue}>
-                Continuar
-              </DefaultButton>
-            )}
-          </div>
-        </div>
-      </div>
-    </DefaultPage>
+          </React.Fragment>
+        );
+      })}
+    </Switch>
   );
 };
 
