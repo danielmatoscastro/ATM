@@ -13,14 +13,10 @@ export const MoneyInput = ({
     {({ className, inputRef }) => (
       <NumberFormat
         value={value}
-        // isNumericString
         onChange={onChange}
         thousandSeparator="."
         decimalSeparator=","
-        // decimalScale={2}
-        // fixedDecimalScale
         className={className}
-        // suffix=",00"
         getInputRef={(el) => { inputRef.current = el; }}
       />
     )}
