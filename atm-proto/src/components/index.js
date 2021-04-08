@@ -5,3 +5,4 @@ export * from './OperationPage';
 export * from './DefaultInput';
 export * from './DefaultMessage';
 export * from './MoneyInput';
+export * from './PasswordInput';

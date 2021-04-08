@@ -1,0 +1,8 @@
+.password-input input {
+    margin: 4px;  
+    font-size: 24px;
+    width: 3rem;
+    text-align: center;
+    color: var(--text-color);
+    border-bottom: var(--border);
+}
