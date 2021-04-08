@@ -23,4 +23,13 @@ export const InsertPassword = () => {
   );
 };
 
+export const validateNext = (userAccount, payload, setErrorMessage) => {
+  if (payload.password === userAccount.password) {
+    return true;
+  }
+
+  setErrorMessage('Senha inválida.');
+  return false;
+};
+
 export default InsertPassword;

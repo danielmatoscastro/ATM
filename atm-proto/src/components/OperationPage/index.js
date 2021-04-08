@@ -17,7 +17,12 @@ export const OperationPage = ({ steps, operationId }) => {
   const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
   const { currentUser } = useCurrentUser();
-  const { currentOperation, initOperation, finishCurrentOperation } = useCurrentOperation();
+  const {
+    currentOperation,
+    initOperation,
+    finishCurrentOperation,
+    cancelCurrentOperation,
+  } = useCurrentOperation();
 
   useEffect(() => {
     if (currentOperation?.id !== operationId && activeStep === 0) {
@@ -43,12 +48,15 @@ export const OperationPage = ({ steps, operationId }) => {
   const onClickBack = () => {
     if (activeStep - 1 >= 0) {
       setActiveStep((active) => active - 1);
-
-      history.push(previousPage);
+    } else {
+      cancelCurrentOperation();
     }
+
+    history.push(previousPage);
   };
 
   const stepNames = steps.map((step) => step.name);
+  const { showButtonBack = true, showButtonContinue = true } = steps[activeStep];
 
   return (
     <DefaultPage>
@@ -74,13 +82,17 @@ export const OperationPage = ({ steps, operationId }) => {
           </Switch>
 
           <div className="flex justify-between px-12">
+            {showButtonBack && (
             <DefaultButton className="voltar" onClick={onClickBack}>
               Voltar
             </DefaultButton>
+            )}
 
-            <DefaultButton className="continuar" onClick={onClickContinue}>
-              Continuar
-            </DefaultButton>
+            { showButtonContinue && (
+              <DefaultButton className="continuar" onClick={onClickContinue}>
+                Continuar
+              </DefaultButton>
+            )}
           </div>
         </div>
       </div>

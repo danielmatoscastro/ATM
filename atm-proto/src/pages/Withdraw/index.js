@@ -1,7 +1,7 @@
 import { OperationPage } from 'components';
 import { useOperations } from 'hooks';
-import { ChooseValue } from './ChooseValue';
-import { InsertPassword } from './InsertPassword';
+import { ChooseValue, validateNext as validateNextChooseValue } from './ChooseValue';
+import { InsertPassword, validateNext as validateNextInsertPassword } from './InsertPassword';
 import { EndWithdraw } from './EndWithdraw';
 
 const steps = [
@@ -9,38 +9,27 @@ const steps = [
     name: 'Valor',
     path: '/valor',
     page: () => <ChooseValue />,
-    validateNext: (userAccount, payload, setErrorMessage) => {
-      if (payload.value <= userAccount.ammount) {
-        return true;
-      }
-
-      setErrorMessage('Valor inválido.');
-      return false;
-    },
+    validateNext: validateNextChooseValue,
   },
   {
     name: 'Senha',
     path: '/senha',
     page: () => <InsertPassword />,
-    validateNext: (userAccount, payload, setErrorMessage) => {
-      if (payload.password === userAccount.password) {
-        return true;
-      }
-
-      setErrorMessage('Senha inválida.');
-      return false;
-    },
+    validateNext: validateNextInsertPassword,
   },
   {
     name: 'Fim',
     path: '/fim-saque',
     page: () => <EndWithdraw />,
     validateNext: () => {},
+    showButtonBack: false,
+    showButtonContinue: false,
   },
 ];
 
 export const Withdraw = () => {
   const { operationsIds } = useOperations();
+
   return (
     <OperationPage steps={steps} operationId={operationsIds.SAQUE} />
   );

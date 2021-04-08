@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { useOperations } from 'hooks/useOperations';
 import { CurrentOperationContext } from './CurrentOperationContext';
 
+const initialStateCurrentOperation = { payload: {} };
 export const CurrentOperationProvider = ({ children }) => {
-  const [currentOperation, setCurrentOperation] = useState({ payload: {} });
+  const [currentOperation, setCurrentOperation] = useState(initialStateCurrentOperation);
   const { operations, incrementOperation } = useOperations();
 
   const initOperation = useCallback((operationId) => {
@@ -15,6 +16,11 @@ export const CurrentOperationProvider = ({ children }) => {
   const finishCurrentOperation = useCallback(
     () => incrementOperation(currentOperation.id),
     [currentOperation, incrementOperation],
+  );
+
+  const cancelCurrentOperation = useCallback(
+    () => setCurrentOperation(initialStateCurrentOperation),
+    [setCurrentOperation, initialStateCurrentOperation],
   );
 
   const setPayload = useCallback(
@@ -30,6 +36,7 @@ export const CurrentOperationProvider = ({ children }) => {
       currentOperation,
       initOperation,
       finishCurrentOperation,
+      cancelCurrentOperation,
       setPayload,
     }}
     >

@@ -28,4 +28,13 @@ export const ChooseValue = () => {
   );
 };
 
+export const validateNext = (userAccount, payload, setErrorMessage) => {
+  if (parseFloat(payload.value) <= parseFloat(userAccount.ammount)) {
+    return true;
+  }
+
+  setErrorMessage('Valor inválido.');
+  return false;
+};
+
 export default ChooseValue;
