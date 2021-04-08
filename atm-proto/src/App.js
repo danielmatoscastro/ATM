@@ -1,6 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CurrentUserProvider, CurrentOperationProvider } from 'contexts';
-import { Menu, Withdraw, SecondaryMeny } from 'pages';
+import {
+  Home,
+  Menu,
+  Withdraw,
+  SecondaryMeny,
+} from 'pages';
 
 function App() {
   return (
@@ -15,8 +20,11 @@ function App() {
               <Route path="/outros">
                 <SecondaryMeny />
               </Route>
-              <Route path="/">
+              <Route path="/menu">
                 <Menu />
+              </Route>
+              <Route path="/">
+                <Home />
               </Route>
             </Switch>
           </div>
