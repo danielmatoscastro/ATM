@@ -6,18 +6,19 @@ export const ChooseValue = () => {
   const { currentOperation, setPayload } = useCurrentOperation();
 
   const onChangeValue = (e) => setPayload({ ...currentOperation.payload, value: e.target.value });
+  const onClickButton = (value) => () => setPayload({ ...currentOperation.payload, value });
 
   return (
     <>
       <h1 className="title">Escolha ou digite o valor do saque</h1>
       <div className="flex justify-around">
-        <DefaultButton className="value-button" onClick={() => setPayload({ ...currentOperation.payload, value: '50' })}>
+        <DefaultButton className="value-button" onClick={onClickButton('50')}>
           R$ 50
         </DefaultButton>
-        <DefaultButton className="value-button">
+        <DefaultButton className="value-button" onClick={onClickButton('175')}>
           R$ 175
         </DefaultButton>
-        <DefaultButton className="value-button">
+        <DefaultButton className="value-button" onClick={onClickButton('500')}>
           R$ 500
         </DefaultButton>
       </div>
