@@ -9,6 +9,11 @@ export const operations = [
     path: '/saque',
     frequency: 1000,
     img: withdraw,
+    doOperation: (userAccount, payload, users) => {
+      const currentAmmount = parseFloat(userAccount.ammount.toString().replaceAll('.', ''));
+      const value = parseFloat(payload.value);
+      users.setUserAmmount(userAccount.id, currentAmmount - value);
+    },
   },
   {
     id: 1,

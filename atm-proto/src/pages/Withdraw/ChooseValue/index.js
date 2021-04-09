@@ -1,4 +1,4 @@
-import { DefaultButton, MoneyInput, ErrorPage } from 'components';
+import { DefaultButton, MoneyInput } from 'components';
 import { useCurrentOperation } from 'hooks';
 import './style.css';
 
@@ -41,7 +41,5 @@ export const validateNext = (userAccount, payload, setErrorMessage) => {
   setErrorMessage('Saldo insuficiente. Tente novamente.');
   return false;
 };
-
-export const OnError = () => <ErrorPage />;
 
 export default ChooseValue;

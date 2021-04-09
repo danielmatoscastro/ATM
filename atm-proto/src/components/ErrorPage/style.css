@@ -1,0 +1,10 @@
+.error-message {
+    color: var(--error-message-color);
+    font-size: var(--error-message-font-size);
+}
+
+.voltar-e-corrigir-button {
+    width: 398px;
+    height: 90px;
+    font-size: 45px;
+}

@@ -14,6 +14,8 @@
     --message-border: 3px solid #000000;
     --message-font-size: 45px;
     --message-line-height: 53px;
+    --error-message-color: #AA0000;
+    --error-message-font-size: 64px;
 }
 
 body {

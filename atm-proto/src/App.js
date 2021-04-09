@@ -23,7 +23,7 @@ function App() {
               <Route path="/menu">
                 <Menu />
               </Route>
-              <Route path="/">
+              <Route exact path="/">
                 <Home />
               </Route>
             </Switch>

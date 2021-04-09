@@ -1,19 +1,15 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useUsers } from 'hooks';
 import { CurrentUserContext } from './CurrentUserContext';
 
 export const CurrentUserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUserId, setCurrentUserId] = useState(-1);
   const { users } = useUsers();
 
-  const setCurrentUserCallback = useCallback((userId) => {
-    const newUser = users.find((user) => user.id === userId);
-    setCurrentUser(newUser);
-  }, [users, setCurrentUser]);
-
+  const currentUser = users.find((user) => user.id === currentUserId);
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser: setCurrentUserCallback }}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser: setCurrentUserId }}>
       {children}
     </CurrentUserContext.Provider>
   );
