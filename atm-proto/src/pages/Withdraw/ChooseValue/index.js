@@ -29,11 +29,16 @@ export const ChooseValue = () => {
 };
 
 export const validateNext = (userAccount, payload, setErrorMessage) => {
+  if (!payload.value) {
+    setErrorMessage('Valor inválido. Tente novamente.');
+    return false;
+  }
+
   if (parseFloat(payload.value.replaceAll('.', '')) <= parseFloat(userAccount.ammount)) {
     return true;
   }
 
-  setErrorMessage('Valor inválido.');
+  setErrorMessage('Saldo insuficiente. Tente novamente.');
   return false;
 };
 
