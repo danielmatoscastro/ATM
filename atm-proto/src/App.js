@@ -1,14 +1,18 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CurrentUserProvider, CurrentOperationProvider } from 'contexts';
+import { useOperations } from 'hooks';
 import {
   Home,
   Menu,
   Withdraw,
   SecondaryMeny,
   Balance,
+  NotImplementedYet,
 } from 'pages';
 
 function App() {
+  const { operationsIds } = useOperations();
+
   return (
     <CurrentUserProvider>
       <CurrentOperationProvider>
@@ -20,6 +24,9 @@ function App() {
               </Route>
               <Route path="/saldo">
                 <Balance />
+              </Route>
+              <Route path="/transferencia">
+                <NotImplementedYet operationId={operationsIds.TRANSFERENCIA} />
               </Route>
               <Route path="/outros">
                 <SecondaryMeny />

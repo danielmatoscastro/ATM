@@ -16,6 +16,7 @@ export const OperationPage = ({
   isLastPage,
   showButtonBack,
   showButtonContinue,
+  showStepIndicator,
 }) => {
   const { path } = useRouteMatch();
   const history = useHistory();
@@ -56,7 +57,7 @@ export const OperationPage = ({
   return (
     <DefaultPage>
       <div className="flex h-full flex-col justify-between pb-7">
-        <StepIndicator steps={stepNames} activeStep={activeStep} />
+        {showStepIndicator && <StepIndicator steps={stepNames} activeStep={activeStep} />}
         <div className="flex flex-col justify-between flex-grow pt-2 pb-10">
           {children}
           <div className="flex justify-between px-12">
@@ -83,6 +84,7 @@ OperationPage.defaultProps = {
   isLastPage: false,
   showButtonBack: true,
   showButtonContinue: true,
+  showStepIndicator: true,
 };
 
 OperationPage.propTypes = {
@@ -95,6 +97,7 @@ OperationPage.propTypes = {
   isLastPage: PropTypes.bool,
   showButtonBack: PropTypes.bool,
   showButtonContinue: PropTypes.bool,
+  showStepIndicator: PropTypes.bool,
 };
 
 export default OperationPage;

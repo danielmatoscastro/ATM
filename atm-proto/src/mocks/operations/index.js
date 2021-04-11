@@ -29,6 +29,7 @@ export const operations = [
     path: '/transferencia',
     frequency: 998,
     img: sendMoney,
+    doOperation: () => {},
   },
   {
     id: 3,
