@@ -34,38 +34,44 @@ export const operations = [
   {
     id: 3,
     name: 'Pagar boleto bancário',
-    path: '/pagar-cartao-de-credito',
+    path: '/pagar-boleto-bancario',
     frequency: 3,
+    doOperation: () => {},
   },
   {
     id: 4,
     name: 'Fatura do cartão de crédito',
     path: '/fatura-do-cartao-de-credito',
     frequency: 0,
+    doOperation: () => {},
   },
   {
     id: 5,
     name: 'Recarga de celular',
     path: '/recarga-de-celular',
     frequency: 4,
+    doOperation: () => {},
   },
   {
     id: 6,
     name: 'Investimentos',
     path: '/investimentos',
     frequency: 1,
+    doOperation: () => {},
   },
   {
     id: 7,
     name: 'Depósito',
     path: '/deposito',
     frequency: 6,
+    doOperation: () => {},
   },
   {
     id: 8,
     name: 'Empréstimo',
     path: '/emprestimo',
     frequency: 5,
+    doOperation: () => {},
   },
 ];
 

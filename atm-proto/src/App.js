@@ -28,6 +28,24 @@ function App() {
               <Route path="/transferencia">
                 <NotImplementedYet operationId={operationsIds.TRANSFERENCIA} />
               </Route>
+              <Route path="/deposito">
+                <NotImplementedYet operationId={operationsIds.DEPOSITO} />
+              </Route>
+              <Route path="/pagar-boleto-bancario">
+                <NotImplementedYet operationId={operationsIds.PAGAR_BOLETO} />
+              </Route>
+              <Route path="/fatura-do-cartao-de-credito">
+                <NotImplementedYet operationId={operationsIds.FATURA_CARTAO} />
+              </Route>
+              <Route path="/recarga-de-celular">
+                <NotImplementedYet operationId={operationsIds.RECARGA} />
+              </Route>
+              <Route path="/investimentos">
+                <NotImplementedYet operationId={operationsIds.INVESTIMENTOS} />
+              </Route>
+              <Route path="/emprestimo">
+                <NotImplementedYet operationId={operationsIds.EMPRESTIMO} />
+              </Route>
               <Route path="/outros">
                 <SecondaryMeny />
               </Route>
