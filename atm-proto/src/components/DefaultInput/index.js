@@ -17,7 +17,9 @@ export const DefaultInput = ({
     <div className="flex justify-center">
       <label className="label-default-input">
         {label}
-        {children({ type, className: 'default-input ml-5', inputRef }) || <input type={type} className="default-input ml-5" ref={inputRef} />}
+        {children
+          ? children({ type, className: 'default-input ml-5', inputRef })
+          : <input type={type} className="default-input ml-5" ref={inputRef} />}
       </label>
     </div>
   );

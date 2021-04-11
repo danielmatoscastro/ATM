@@ -19,6 +19,7 @@ export const CurrentOperationProvider = ({ children }) => {
   const finishCurrentOperation = useCallback(() => {
     incrementOperation(currentOperation.id);
     currentOperation.doOperation(currentUser, currentOperation.payload, users);
+    setCurrentOperation(initialStateCurrentOperation);
   },
   [currentOperation, incrementOperation]);
 

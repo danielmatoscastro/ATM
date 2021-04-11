@@ -8,6 +8,7 @@ export const MoneyInput = ({
   onChange,
   value,
   focusOnMount,
+  disabled,
 }) => (
   <DefaultInput focusOnMount={focusOnMount} label={label}>
     {({ className, inputRef }) => (
@@ -18,6 +19,7 @@ export const MoneyInput = ({
         decimalSeparator=","
         className={className}
         getInputRef={(el) => { inputRef.current = el; }}
+        disabled={disabled}
       />
     )}
   </DefaultInput>
@@ -26,13 +28,16 @@ export const MoneyInput = ({
 MoneyInput.defaultProps = {
   label: '',
   focusOnMount: false,
+  onChange: () => {},
+  disabled: false,
 };
 
 MoneyInput.propTypes = {
   label: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   value: PropTypes.string.isRequired,
   focusOnMount: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default MoneyInput;

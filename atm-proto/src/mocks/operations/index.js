@@ -21,6 +21,7 @@ export const operations = [
     path: '/saldo',
     frequency: 999,
     img: receipt,
+    doOperation: () => {},
   },
   {
     id: 2,

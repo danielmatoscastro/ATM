@@ -5,6 +5,7 @@ import {
   Menu,
   Withdraw,
   SecondaryMeny,
+  Balance,
 } from 'pages';
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
             <Switch>
               <Route path="/saque">
                 <Withdraw />
+              </Route>
+              <Route path="/saldo">
+                <Balance />
               </Route>
               <Route path="/outros">
                 <SecondaryMeny />
