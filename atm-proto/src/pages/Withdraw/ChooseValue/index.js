@@ -15,8 +15,8 @@ export const ChooseValue = () => {
         <DefaultButton className="value-button" onClick={onClickButton('50')}>
           R$ 50
         </DefaultButton>
-        <DefaultButton className="value-button" onClick={onClickButton('175')}>
-          R$ 175
+        <DefaultButton className="value-button" onClick={onClickButton('250')}>
+          R$ 250
         </DefaultButton>
         <DefaultButton className="value-button" onClick={onClickButton('500')}>
           R$ 500
