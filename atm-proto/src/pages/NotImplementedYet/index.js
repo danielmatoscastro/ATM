@@ -12,7 +12,6 @@ export const NotImplementedYet = ({ operationId }) => {
 
   useEffect(() => {
     if (!currentOperation || !currentOperation.id || operationId !== currentOperation.id) {
-      console.log('init');
       initOperation(operationId);
     }
   }, []);
