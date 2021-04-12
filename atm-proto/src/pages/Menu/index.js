@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Textfit } from 'react-textfit';
 import { DefaultPage, DefaultButton } from 'components';
 import { useOperations } from 'hooks';
 import './style.css';
@@ -13,8 +14,12 @@ export const Menu = () => {
       <div className="flex justify-around mt-16 mb-12">
         {operationsTop3.map((operation) => (
           <Link key={operation.id} to={operation.path}>
-            <DefaultButton className={`main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}>
-              <div className="my-9">{operation.name}</div>
+            <DefaultButton className={`px-1 main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}>
+              <div className="my-9">
+                <Textfit mode="single" max={45} min={24}>
+                  <span>{operation.name}</span>
+                </Textfit>
+              </div>
               {operation.img && <img src={operation.img} alt={operation.name} className="m-auto" />}
             </DefaultButton>
           </Link>
