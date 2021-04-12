@@ -16,7 +16,7 @@ export const Menu = () => {
           <Link key={operation.id} to={operation.path}>
             <DefaultButton className={`px-1 main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}>
               <div className="my-9">
-                <Textfit mode="single" max={45} min={24}>
+                <Textfit mode="multi" max={45} min={24}>
                   <span>{operation.name}</span>
                 </Textfit>
               </div>
