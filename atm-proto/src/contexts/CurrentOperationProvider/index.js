@@ -16,12 +16,11 @@ export const CurrentOperationProvider = ({ children }) => {
     setCurrentOperation({ ...operation, payload: {} });
   }, [operations, setCurrentOperation]);
 
-  const finishCurrentOperation = useCallback(() => {
+  const finishCurrentOperation = () => {
     incrementOperation(currentOperation.id);
     currentOperation.doOperation(currentUser, currentOperation.payload, users);
     setCurrentOperation(initialStateCurrentOperation);
-  },
-  [currentOperation, incrementOperation]);
+  };
 
   const cancelCurrentOperation = useCallback(
     () => setCurrentOperation(initialStateCurrentOperation),

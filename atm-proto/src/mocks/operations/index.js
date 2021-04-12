@@ -2,6 +2,22 @@ import withdraw from 'imgs/withdraw.png';
 import receipt from 'imgs/receipt.png';
 import sendMoney from 'imgs/sendMoney.png';
 
+export const doOperationById = [
+  (userAccount, payload, users) => {
+    const currentAmmount = parseFloat(userAccount.ammount.toString().replaceAll('.', ''));
+    const value = parseFloat(payload.value);
+    users.setUserAmmount(userAccount.id, currentAmmount - value);
+  },
+  () => {},
+  () => {},
+  () => {},
+  () => {},
+  () => {},
+  () => {},
+  () => {},
+  () => {},
+];
+
 export const operations = [
   {
     id: 0,
@@ -9,11 +25,7 @@ export const operations = [
     path: '/saque',
     frequency: 1000,
     img: withdraw,
-    doOperation: (userAccount, payload, users) => {
-      const currentAmmount = parseFloat(userAccount.ammount.toString().replaceAll('.', ''));
-      const value = parseFloat(payload.value);
-      users.setUserAmmount(userAccount.id, currentAmmount - value);
-    },
+    doOperation: doOperationById[0],
   },
   {
     id: 1,
@@ -21,7 +33,7 @@ export const operations = [
     path: '/saldo',
     frequency: 999,
     img: receipt,
-    doOperation: () => {},
+    doOperation: doOperationById[1],
   },
   {
     id: 2,
@@ -29,49 +41,49 @@ export const operations = [
     path: '/transferencia',
     frequency: 998,
     img: sendMoney,
-    doOperation: () => {},
+    doOperation: doOperationById[2],
   },
   {
     id: 3,
     name: 'Pagar boleto bancário',
     path: '/pagar-boleto-bancario',
     frequency: 3,
-    doOperation: () => {},
+    doOperation: doOperationById[3],
   },
   {
     id: 4,
     name: 'Fatura do cartão de crédito',
     path: '/fatura-do-cartao-de-credito',
     frequency: 0,
-    doOperation: () => {},
+    doOperation: doOperationById[4],
   },
   {
     id: 5,
     name: 'Recarga de celular',
     path: '/recarga-de-celular',
     frequency: 4,
-    doOperation: () => {},
+    doOperation: doOperationById[5],
   },
   {
     id: 6,
     name: 'Investimentos',
     path: '/investimentos',
     frequency: 1,
-    doOperation: () => {},
+    doOperation: doOperationById[6],
   },
   {
     id: 7,
     name: 'Depósito',
     path: '/deposito',
     frequency: 6,
-    doOperation: () => {},
+    doOperation: doOperationById[7],
   },
   {
     id: 8,
     name: 'Empréstimo',
     path: '/emprestimo',
     frequency: 5,
-    doOperation: () => {},
+    doOperation: doOperationById[8],
   },
 ];
 

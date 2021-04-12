@@ -7,7 +7,7 @@ export const useUsers = () => {
   const [users, setUsers] = useUsersInternal();
 
   const setUserAmmount = (userId, ammount) => {
-    setUsers(users.map((user) => (user.id === userId ? ({ ...user, ammount }) : user)));
+    setUsers((us) => us.map((user) => (user.id === userId ? ({ ...user, ammount }) : user)));
   };
 
   return { users, usersIds, setUserAmmount };

@@ -1,20 +1,24 @@
-import { useState, useEffect, useCallback } from 'react';
-import { operations as initialOperations, operationsIds } from 'mocks';
+import { useEffect, useCallback } from 'react';
+import { createLocalStorageStateHook } from 'use-local-storage-state';
+import { operations as initialOperations, operationsIds, doOperationById } from 'mocks';
+
+const useOperationsInternal = createLocalStorageStateHook('operations', initialOperations);
 
 export const useOperations = () => {
-  const [operations, setOperations] = useState([]);
+  const [operations, setOperations] = useOperationsInternal();
 
   useEffect(() => {
-    setOperations(initialOperations);
+    setOperations(operations.map((operation) => ({
+      ...operation,
+      doOperation: doOperationById[operation.id],
+    })));
   }, []);
 
-  const incrementOperation = useCallback((operationPath) => {
-    setOperations(operations.map((operation) => {
-      if (operation.path === operationPath) {
-        return { ...operation, frequency: operation.frequency + 1 };
-      }
-      return operation;
-    }));
+  const incrementOperation = useCallback((operationId) => {
+    setOperations(operations.map((operation) => (
+      operation.id === operationId
+        ? ({ ...operation, frequency: operation.frequency + 1 })
+        : operation)));
   });
 
   const operationsSorted = operations.sort((a, b) => {
