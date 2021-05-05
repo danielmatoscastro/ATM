@@ -40,8 +40,8 @@ export const useOperations = () => {
     return -(a.frequency - b.frequency);
   });
 
-  console.log(shouldSortByFreq);
-  console.log(shouldSortByFreq ? operationsSorted : operations);
+  // console.log(shouldSortByFreq);
+  // console.log(shouldSortByFreq ? operationsSorted : operations);
 
   return {
     operations: shouldSortByFreq ? operationsSorted : operations,
