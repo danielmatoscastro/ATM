@@ -1,3 +1,4 @@
+export * from './NameForm';
 export * from './Home';
 export * from './Menu';
 export * from './Withdraw';
