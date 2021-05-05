@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { DefaultPage, DefaultButton } from 'components';
-import { useOperations } from 'hooks';
+import { useOperations, useLog } from 'hooks';
 import './style.css';
 
 export const SecondaryMeny = () => {
+  const { logStartOperation } = useLog();
   const { operations } = useOperations();
 
   const operationsSorted = operations.slice(3);
@@ -14,7 +15,10 @@ export const SecondaryMeny = () => {
       <div className="flex flex-wrap justify-around mt-8 mb-5">
         {operationsSorted.map((operation) => (
           <Link key={operation.path} to={`${operation.path}`}>
-            <DefaultButton className="secondary-menu-button mb-5">
+            <DefaultButton
+              onClick={() => logStartOperation(operation.name)}
+              className="secondary-menu-button mb-5"
+            >
               <div className="px-3">{operation.name}</div>
             </DefaultButton>
           </Link>

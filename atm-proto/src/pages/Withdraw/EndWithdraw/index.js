@@ -1,13 +1,15 @@
 import { useHistory } from 'react-router-dom';
-import { useCurrentOperation } from 'hooks';
+import { useCurrentOperation, useLog } from 'hooks';
 import { DefaultButton, DefaultMessage } from 'components';
 import './style.css';
 
 export const EndWithdraw = () => {
   const history = useHistory();
+  const { logEnd } = useLog();
   const { finishCurrentOperation } = useCurrentOperation();
 
   const onClickButton = () => {
+    logEnd();
     finishCurrentOperation();
     history.push('/');
   };

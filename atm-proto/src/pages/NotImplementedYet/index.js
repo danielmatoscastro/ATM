@@ -2,12 +2,13 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { DefaultPage, DefaultButton, DefaultMessage } from 'components';
-import { useCurrentOperation } from 'hooks';
+import { useCurrentOperation, useLog } from 'hooks';
 
 import './style.css';
 
 export const NotImplementedYet = ({ operationId }) => {
   const history = useHistory();
+  const { logEnd } = useLog();
   const { currentOperation, initOperation, finishCurrentOperation } = useCurrentOperation();
 
   useEffect(() => {
@@ -17,6 +18,7 @@ export const NotImplementedYet = ({ operationId }) => {
   }, []);
 
   const onClickHandler = () => {
+    logEnd();
     finishCurrentOperation();
     history.goBack();
   };

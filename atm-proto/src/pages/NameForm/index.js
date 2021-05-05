@@ -6,7 +6,7 @@ import './style.css';
 export const NameForm = () => {
   const { name, setName, setStart } = useLog();
 
-  const onChangeNameHandler = (e) => setName(e.target.vale);
+  const onChangeNameHandler = (e) => setName(e.target.value);
   const onClickHandler = () => {
     if (name !== '') {
       setStart(true);

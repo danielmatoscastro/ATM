@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Textfit } from 'react-textfit';
 import { DefaultPage, DefaultButton } from 'components';
-import { useOperations } from 'hooks';
+import { useOperations, useLog } from 'hooks';
 import './style.css';
 
 export const Menu = () => {
+  const { logStartOperation } = useLog();
   const { operations, operationsIds } = useOperations();
   const operationsTop3 = operations.slice(0, 3);
 
@@ -14,7 +15,10 @@ export const Menu = () => {
       <div className="flex justify-around mt-16 mb-12">
         {operationsTop3.map((operation) => (
           <Link key={operation.id} to={operation.path}>
-            <DefaultButton className={`px-1 main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}>
+            <DefaultButton
+              onClick={() => logStartOperation(operation.name)}
+              className={`px-1 main-menu-button ${operation.id === operationsIds.TRANSFERENCIA ? 'transferencia' : ''}`}
+            >
               <div className="my-9">
                 <Textfit mode="multi" max={45} min={24}>
                   <span>{operation.name}</span>
