@@ -9,7 +9,7 @@ export const LogProvider = ({ setStart, children }) => {
   const [startupTime, setStartupTime] = useState(0);
   const [operation, setOperation] = useState('');
   const [interactionId, setInteractionId] = useState('');
-  const { shouldSortByFreq } = useShouldSortByFreq();
+  const { id, shouldSortByFreq } = useShouldSortByFreq();
 
   const logStart = () => {
     setStartupTime(Date.now());
@@ -24,6 +24,7 @@ export const LogProvider = ({ setStart, children }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      id,
       name,
       interactionId,
       sortedByFreq: shouldSortByFreq,
@@ -39,6 +40,7 @@ export const LogProvider = ({ setStart, children }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      id,
       name,
       interactionId,
       sortedByFreq: shouldSortByFreq,
