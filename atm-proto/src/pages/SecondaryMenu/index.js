@@ -4,10 +4,13 @@ import { useOperations, useLog } from 'hooks';
 import './style.css';
 
 export const SecondaryMeny = () => {
-  const { logStartOperation } = useLog();
+  const { logStartOperation, logBack } = useLog();
   const { operations } = useOperations();
 
   const operationsSorted = operations.slice(3);
+
+  const onClickOperationHandler = (op) => () => logStartOperation(op);
+  const onClickBackHandler = () => logBack('Menu secundário');
 
   return (
     <DefaultPage>
@@ -16,7 +19,7 @@ export const SecondaryMeny = () => {
         {operationsSorted.map((operation) => (
           <Link key={operation.path} to={`${operation.path}`}>
             <DefaultButton
-              onClick={() => logStartOperation(operation.name)}
+              onClick={onClickOperationHandler(operation.name)}
               className="secondary-menu-button mb-5"
             >
               <div className="px-3">{operation.name}</div>
@@ -26,7 +29,7 @@ export const SecondaryMeny = () => {
       </div>
       <div className="flex align-center justify-center">
         <Link to="/menu">
-          <DefaultButton className="secondary-menu-voltar">
+          <DefaultButton onClick={onClickBackHandler} className="secondary-menu-voltar">
             <div>voltar</div>
           </DefaultButton>
         </Link>

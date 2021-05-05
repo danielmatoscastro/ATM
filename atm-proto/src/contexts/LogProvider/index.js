@@ -30,6 +30,21 @@ export const LogProvider = ({ setStart, children }) => {
     }),
   });
 
+  const logBack = (page) => fetch('https://sheet.best/api/sheets/57107d6f-056a-4a22-9311-159a561d41a0', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      interactionId,
+      operation,
+      startupTime,
+      page,
+      backTime: Date.now(),
+    }),
+  });
+
   return (
     <LogContext.Provider value={{
       name,
@@ -38,6 +53,7 @@ export const LogProvider = ({ setStart, children }) => {
       logStart,
       logStartOperation,
       logEnd,
+      logBack,
     }}
     >
       {children}

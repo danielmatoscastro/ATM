@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { useCurrentUser, useCurrentOperation } from 'hooks';
+import { useCurrentUser, useCurrentOperation, useLog } from 'hooks';
 import { DefaultPage } from '../DefaultPage';
 import { DefaultButton } from '../DefaultButton';
 import { StepIndicator } from '../StepIndicator';
@@ -20,6 +20,7 @@ export const OperationPage = ({
 }) => {
   const { path } = useRouteMatch();
   const history = useHistory();
+  const { logBack } = useLog();
   const { currentUser } = useCurrentUser();
   const {
     currentOperation,
@@ -50,7 +51,7 @@ export const OperationPage = ({
     if (isFirstPage) {
       cancelCurrentOperation();
     }
-
+    logBack(stepNames[activeStep]);
     history.goBack();
   };
 
