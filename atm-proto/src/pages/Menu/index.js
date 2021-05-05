@@ -9,6 +9,8 @@ export const Menu = () => {
   const { operations, operationsIds } = useOperations();
   const operationsTop3 = operations.slice(0, 3);
 
+  // console.log(operations);
+
   return (
     <DefaultPage>
       <h1>Escolha a operação</h1>

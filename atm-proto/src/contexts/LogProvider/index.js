@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { useShouldSortByFreq } from 'hooks';
 import { LogContext } from './LogContext';
 
 export const LogProvider = ({ setStart, children }) => {
@@ -8,6 +9,7 @@ export const LogProvider = ({ setStart, children }) => {
   const [startupTime, setStartupTime] = useState(0);
   const [operation, setOperation] = useState('');
   const [interactionId, setInteractionId] = useState('');
+  const { shouldSortByFreq } = useShouldSortByFreq();
 
   const logStart = () => {
     setStartupTime(Date.now());
@@ -24,6 +26,7 @@ export const LogProvider = ({ setStart, children }) => {
     body: JSON.stringify({
       name,
       interactionId,
+      sortedByFreq: shouldSortByFreq,
       operation,
       startupTime,
       endTime: Date.now(),
@@ -38,6 +41,7 @@ export const LogProvider = ({ setStart, children }) => {
     body: JSON.stringify({
       name,
       interactionId,
+      sortedByFreq: shouldSortByFreq,
       operation,
       startupTime,
       page,

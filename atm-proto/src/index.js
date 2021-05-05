@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { ShouldSortByFreqProvider } from 'contexts';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ShouldSortByFreqProvider>
+      <App />
+    </ShouldSortByFreqProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
